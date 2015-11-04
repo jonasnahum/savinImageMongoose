@@ -10,7 +10,7 @@ module.exports = (function() {
             
         router.post('/post', imagenesApi.save.bind(imagenesApi));
 
-        //router.get('/oneImagen/:id',  imagenesApi.getOne.bind(imagenesApi));
+        router.get('/oneImagen/:id',  imagenesApi.getOne.bind(imagenesApi));
         
     }
     

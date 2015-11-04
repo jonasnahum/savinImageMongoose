@@ -4,7 +4,7 @@ var ImagenesApi = (function() {
         this.imagenFactory = imagenFactory;
         this.fs = fs.module;
     };
-    
+    //curl http://localhost:3000/imagenes/api/getAll
     ImagenesApi.prototype.getAll = function(req, res, next) {
         var that = this;       
         
@@ -14,26 +14,25 @@ var ImagenesApi = (function() {
             res.json(imagenes);
         });
     };
-    /*
+    //curl http://localhost:3000/imagenes/api/oneImagen/563a52088ffd0f7317631896
     ImagenesApi.prototype.getOne = function(req, res, next) {
         var that = this;
         
-        that.models.balance.findOne({ _id: req.params.id })
-        .populate('_userId')
-        .exec(function (err, balance) {
+        that.models.imagen.findOne({ _id: req.params.id })
+        .exec(function (err, imagen) {
             if (err) return next(err);
-            console.log(balance);
-            res.json(balance);
+            console.log(imagen);
+            res.json(imagen);
         });
     };
-    */
+    //curl -i -H "Content-Type: application/json" -d '{ "username": "rodrigo", "password": "test", "id": 1 }' http://localhost:3000/imagenes/api/post
     ImagenesApi.prototype.save = function(req, res, next){
         var that = this;
         
-        var imgPath = './public/images/logo.png';
+        var imgPath = './public/images/mapa.jpeg';
         var imagen = that.imagenFactory.get();
         imagen.imagen.data = that.fs.readFileSync(imgPath);
-        imagen.imagen.contentType = "png";
+        //imagen.imagen.contentType = "png";
 
         imagen.save(function(err, imagen) {
             if(err){
