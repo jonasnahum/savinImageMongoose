@@ -4,18 +4,17 @@ var ImagenesApi = (function() {
         this.imagenFactory = imagenFactory;
         this.fs = fs.module;
     };
-    /*
+    
     ImagenesApi.prototype.getAll = function(req, res, next) {
         var that = this;       
         
-        that.models.imagen.find({//buscar balances cuyo userid sea este.
-            _userId: req.params.userId}).populate('_userId')
-            .exec(function (err, balances) {
-                if (err) return console.log(err);
-                console.log(balances);
-                res.json(balances);
-            });   
+        that.models.imagen.find(function (err, imagenes) {
+            if (err) return next(err);
+            console.log(imagenes)
+            res.json(imagenes);
+        });
     };
+    /*
     ImagenesApi.prototype.getOne = function(req, res, next) {
         var that = this;
         

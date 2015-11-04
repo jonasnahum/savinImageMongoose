@@ -6,7 +6,7 @@ module.exports = (function() {
         
         var router = this.router;
 
-       // router.get('/', imagenesApi.getAll.bind(imagenesApi));
+        router.get('/getAll', imagenesApi.getAll.bind(imagenesApi));
             
         router.post('/post', imagenesApi.save.bind(imagenesApi));
 
